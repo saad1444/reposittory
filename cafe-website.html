@@ -1,0 +1,709 @@
+
+
+                              <!-- Cafe Website
+                      Features: Menu, booking form, and gallery etc -->
+                      
+                      <!DOCTYPE html>
+                      <html lang="en">
+                      <head>
+                          <meta charset="UTF-8">
+                          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                          <title>Cafe Website</title>
+                          <style>
+                              * {
+                                  margin: 0;
+                                  padding: 0;
+                                  box-sizing: border-box;
+                                  font-family: Arial, sans-serif;
+                              }
+                          
+                              body {
+                                  background-color: #f4f4f4;
+                                  padding: 20px;
+                              }
+                          
+                              nav {
+                                  background-color: #333;
+                                  padding: 10px;
+                                  text-align: center;
+                              }
+                          
+                              nav ul {
+                                  list-style: none;
+                                  display: inline-flex;
+                              }
+                          
+                              nav ul li {
+                                  margin: 0 15px;
+                              }
+                          
+                              nav ul li a {
+                                  color: #fff;
+                                  text-decoration: none;
+                                  font-size: 18px;
+                              }
+                          
+                              h1 {
+                                  color: #333;
+                              }
+                          
+                              section {
+                                  display: none;
+                              }
+                          
+                              .active {
+                                  display: block;
+                              }
+                          
+                              .menu-items {
+                                  display: grid;
+                                  grid-template-columns: repeat(3, 1fr);
+                                  gap: 20px;
+                                  margin-top: 20px;
+                              }
+                          
+                              .menu-item {
+                                  background: #fff;
+                                  border: 1px solid #ddd;
+                                  border-radius: 8px;
+                                  padding: 15px;
+                                  text-align: center;
+                                  transition: transform 0.3s ease, box-shadow 0.3s ease;
+                              }
+                          
+                              .menu-item:hover {
+                                  transform: scale(1.05);
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                              }
+                          
+                              .menu-item img {
+                                  max-width: 70%;
+                                  max-height: 250px; /* Ensure image size doesn't exceed 350px */
+                                  width: auto;
+                                  height: auto;
+                                  border-radius: 8px;
+                                  transition: transform 0.3s ease;
+                              }
+                          
+                              .menu-item img:hover {
+                                  transform: scale(1.1); /* Slight zoom effect on image hover */
+                              }
+                          
+                              .menu-item h3 {
+                                  margin: 10px 0;
+                              }
+                          
+                              .menu-item p {
+                                  color: #555;
+                              }
+                          
+                              .menu-item button {
+                                  background: #333;
+                                  color: #fff;
+                                  padding: 10px;
+                                  border: none;
+                                  border-radius: 5px;
+                                  cursor: pointer;
+                                  transition: background-color 0.3s ease;
+                              }
+                          
+                              .menu-item button:hover {
+                                  background-color: #555;
+                              }
+                          
+                              footer {
+                                  text-align: center;
+                                  margin-top: 40px;
+                                  color: #333;
+                              }
+                      
+                              * {
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                              font-family: Arial, sans-serif;
+                          }
+                      
+                          body {
+                              background-color: #f4f4f4;
+                              padding: 20px;
+                          }
+                      
+                          nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+nav ul {
+    list-style: none;
+    display: inline-flex;
+    justify-content: center; /* Center the navigation items */
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 20px; /* Increased margin for more spacing between items */
+    position: relative;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px; /* Added padding for better spacing */
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover {
+    color: #ff9800; /* Orange color on hover */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Adds a glowing effect */
+    background-color: rgba(255, 152, 0, 0.1); /* Background effect on hover */
+    transform: translateY(-3px); /* Slight lift effect on hover */
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff9800;
+    transition: width 0.3s ease; /* Slide-in effect */
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+}
+
+                      
+                          h1 {
+                              color: #333;
+                          }
+                      
+                          section {
+                              display: none;
+                          }
+                      
+                          .active {
+                              display: block;
+                          }
+                      
+                          .menu-items {
+                              display: grid;
+                              grid-template-columns: repeat(3, 1fr);
+                              gap: 20px;
+                              margin-top: 20px;
+                          }
+                      
+                          .menu-item {
+                              background: #fff;
+                              border: 1px solid #ddd;
+                              border-radius: 8px;
+                              padding: 15px;
+                              text-align: center;
+                              transition: transform 0.3s ease, box-shadow 0.3s ease;
+                          }
+                      
+                          .menu-item:hover {
+                              transform: scale(1.05);
+                              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                          }
+                      
+                          .menu-item img {
+                              max-width: 100%;
+                              max-height: 350px; /* Restricting the image size */
+                              height: 300px;
+                              width: 300px; /* Ensure consistent width */
+                              object-fit: cover; /* Ensures images are cropped to fit the container without stretching */
+                              border-radius: 8px;
+                              transition: transform 0.3s ease;
+                          }
+                      
+                          .menu-item img:hover {
+                              transform: scale(1.1); /* Slight zoom effect on image hover */
+                          }
+                      
+                          .menu-item h3 {
+                              margin: 10px 0;
+                          }
+                      
+                          .menu-item p {
+                              color: #555;
+                          }
+                      
+                          .menu-item button {
+                              background: #333;
+                              color: #fff;
+                              padding: 10px;
+                              border: none;
+                              border-radius: 5px;
+                              cursor: pointer;
+                              transition: background-color 0.3s ease;
+                          }
+                      
+                          .menu-item button:hover {
+                              background-color: #555;
+                          }
+                      
+                          footer {
+                              text-align: center;
+                              margin-top: 40px;
+                              color: #333;
+                          }
+
+
+
+                          /* Existing styles remain the same */
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .menu-items {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stack menu items vertically */
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-items {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for smaller screens */
+    }
+
+    .menu-item img {
+        width: 90%; /* Adjust image width */
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px; /* Reduce padding */
+    }
+
+    nav {
+        padding: 5px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px; /* Smaller font for mobile */
+        padding: 8px 15px;
+    }
+
+    .menu-item {
+        padding: 10px;
+    }
+
+    .menu-item img {
+        width: 100%; /* Full width for small screens */
+        height: auto;
+    }
+}
+
+                          </style>
+                          
+                      </head>
+                      <body>
+                      
+                          <!-- Navbar -->
+                          <nav>
+                              <ul>
+                                  <li><a href="#" onclick="showSection('menu')">Menu</a></li>
+                                  <li><a href="#" onclick="showSection('booking')">Booking</a></li>
+                                  <li><a href="#" onclick="showSection('about')">About</a></li>
+                                  <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                              </ul>
+                          </nav>
+                      
+                          <!-- Menu Section -->
+                          <section id="menu" class="menu active">
+                              <h1>Our Menu</h1>
+                              <div class="menu-items" id="menu-items"></div>
+                          </section>
+                      
+                          <!-- Booking Section -->
+                         <!-- Booking Section -->
+                      <section id="booking" style="background-color: #f0f8ff; padding: 40px; border-radius: 10px; max-width: 600px; margin: 40px auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                          <h1 style="text-align: center; color: #2c3e50; margin-bottom: 20px; font-family: 'Arial', sans-serif;">Book a Table</h1>
+                          <form id="booking-form" style="display: flex; flex-direction: column; gap: 15px;">
+                              <input 
+                                  type="text" 
+                                  id="name" 
+                                  placeholder="Your Name" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #fff; font-family: 'Arial', sans-serif;"
+                              >
+                              <input 
+                                  type="email" 
+                                  id="email" 
+                                  placeholder="Your Email" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #fff; font-family: 'Arial', sans-serif;"
+                              >
+                              <input 
+                                  type="datetime-local" 
+                                  id="booking-time" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #fff; font-family: 'Arial', sans-serif;"
+                              >
+                              <textarea 
+                                  id="special-request" 
+                                  placeholder="Special Requests" 
+                                  rows="4" 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; background-color: #fff; font-family: 'Arial', sans-serif; resize: none;"
+                              ></textarea>
+                              <button 
+                                  type="submit" 
+                                  style="background-color: #3498db; color: #fff; padding: 12px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; transition: background-color 0.3s ease; font-family: 'Arial', sans-serif;"
+                              >
+                                  Submit Booking
+                              </button>
+                          </form>
+                      </section>
+                      
+                         <!-- About Section -->
+                      <section id="about" style="padding: 40px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-top: 40px;">
+                          <h1 style="color: #333; font-family: 'Arial', sans-serif; text-align: center;">About Us</h1>
+                          
+                          <!-- Our Café Experience -->
+                          <h2 style="color: #333; font-size: 24px; margin-top: 30px; font-family: 'Arial', sans-serif;">Our Café Experience</h2>
+                          <p style="color: #555; font-size: 18px; line-height: 1.6; margin-top: 20px;">
+                              Welcome to our cozy cafe, where every cup of coffee tells a story, and every bite of food is crafted with love. We believe in offering a warm and welcoming space for everyone—from coffee lovers to food enthusiasts. Our cafe is designed with a modern yet relaxed ambiance, creating the perfect environment to relax, catch up with friends, or even get some work done.
+                          </p>
+                          
+                          <!-- Delicious Menu -->
+                          <h2 style="color: #333; font-size: 24px; margin-top: 30px; font-family: 'Arial', sans-serif;">Delicious Menu</h2>
+                          <p style="color: #555; font-size: 18px; line-height: 1.6; margin-top: 20px;">
+                              At our cafe, we believe that food is an experience. That's why we carefully curate our menu with a variety of delicious, fresh, and high-quality meals and beverages. Whether you're in the mood for a hot cup of espresso, a sweet treat like a muffin, or a refreshing smoothie, we have something to satisfy every craving. We also cater to special dietary needs with options for vegan, gluten-free, and dairy-free diets.
+                          </p>
+                          
+                          <!-- Our Passionate Team -->
+                          <h2 style="color: #333; font-size: 24px; margin-top: 30px; font-family: 'Arial', sans-serif;">Our Passionate Team</h2>
+                          <p style="color: #555; font-size: 18px; line-height: 1.6; margin-top: 20px;">
+                              Our team is passionate about coffee, food, and hospitality. With years of experience in the food and beverage industry, we are committed to delivering exceptional service to all our guests. From the moment you walk through our doors, you'll be greeted with a smile and treated like family. Whether you’re here for a quick bite or to unwind after a long day, we want you to feel at home.
+                          </p>
+                      
+                          <!-- Community Engagement -->
+                          <h2 style="color: #333; font-size: 24px; margin-top: 30px; font-family: 'Arial', sans-serif;">Community Engagement</h2>
+                          <p style="color: #555; font-size: 18px; line-height: 1.6; margin-top: 20px;">
+                              In addition to our great menu, we also host regular events such as live music nights, trivia evenings, and coffee tasting sessions. We believe in building a community around our cafe, and we love to bring people together over great food, drinks, and conversations.
+                          </p>
+                          
+                          <!-- Invitation to Visit -->
+                          <h2 style="color: #333; font-size: 24px; margin-top: 30px; font-family: 'Arial', sans-serif;">Invitation to Visit</h2>
+                          <p style="color: #555; font-size: 18px; line-height: 1.6; margin-top: 20px;">
+                              Thank you for choosing to visit our cafe. We hope to make your experience memorable and enjoyable. We invite you to explore our menu, try our signature drinks, and enjoy the warm and inviting atmosphere we’ve created just for you. Come for the coffee, stay for the experience.
+                          </p>
+                      </section>
+                      
+                      
+                        <!-- Contact Section -->
+                      <section id="contact" style="background-color: #f8f9fa; padding: 40px; border-radius: 8px; max-width: 600px; margin: 40px auto;">
+                          <h1 style="text-align: center; color: #333; margin-bottom: 20px;">Contact Us</h1>
+                          <form id="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
+                              <input 
+                                  type="text" 
+                                  id="contact-name" 
+                                  placeholder="Your Name" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;"
+                              >
+                              <input 
+                                  type="email" 
+                                  id="contact-email" 
+                                  placeholder="Your Email" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;"
+                              >
+                              <textarea 
+                                  id="contact-message" 
+                                  placeholder="Your Message" 
+                                  rows="5" 
+                                  required 
+                                  style="padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; resize: none;"
+                              ></textarea>
+                              <button 
+                                  type="submit" 
+                                  style="background-color: #28a745; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; transition: background-color 0.3s ease;"
+                              >
+                                  Submit
+                              </button>
+                          </form>
+                          <!-- Footer -->
+                          <footer>
+                              <p>&copy; 2025 Cafe Website. All rights reserved.</p>
+                          </footer>
+                      
+                          <script>
+                              const menuData = [
+                              { title: "Americano", image: "double-espresso-coffee-mug-with-cinnamon-sticks-coffee-beans-wooden-board_181624-57338.avif", description: "Black coffee with hot water", price: "$3" },
+                      { title: "Mocha", image: "hot-oatmeal-cocoa-with-marshmallow-chocolate-chip-cookies-sweets-horizontal-orientation-close-up_648777-908.jpg", description: "Chocolate-flavored coffee", price: "$5" },
+                      { title: "Macchiato", image: "glass-three-layered-coffee-with-cream-syrup_140725-6949.avif", description: "Espresso with a dollop of foam", price: "$4" },
+                      { title: "Iced Coffee", image: "iced-black-coffee-with-milk-tall-glass_219795-503.avif", description: "Chilled coffee with ice", price: "$3.5" },
+                      { title: "Flat White", image: "coffee-with-latte-art-white-ceramic-cup-table_181624-4718.avif", description: "Espresso with microfoam", price: "$4.5" },
+                      { title: "Cold Brew", image: "iced-latte-coffee-morning-breakfast-concept_144627-42807.avif", description: "Slow-steeped cold coffee", price: "$5" },
+                      { title: "Muffin", image: "chocolate-muffins-sprinkled-with-candy-hearts_268847-1669.jpg", description: "Blueberry or chocolate chip muffin", price: "$2.5" },
+                      { title: "Bagel", image: "freshly-baked-gourmet-bagel-with-sesame-seeds-generated-by-ai_188544-18136.jpg", description: "Freshly baked bagel with cream cheese", price: "$3.5" },
+                      { title: "Croissant", image: "delicious-breakfast-with-fresh-croissants-ripe-berries-beautiful-wooden-table_73989-8130.jpg", description: "Flaky butter croissant", price: "$3" },
+                      { title: "Donut", image: "pastries-concept-donuts-with-chocolate-glaze-with-sprinkles-dark-concrete-table_73989-29052.jpg", description: "Glazed or chocolate donut", price: "$2.5" },
+                      { title: "Smoothie", image: "smoothie-with-strawberry-banana-kiwi_82893-3536.jpg", description: "Fresh fruit blended drink", price: "$5" },
+                      { title: "Milkshake", image: "tasty-milkshake-drink-with-straw_144627-42438.jpg", description: "Thick and creamy milkshake", price: "$4.5" },
+                      { title: "Quiche", image: "quiche-lorraine-easter-brunch_1105327-6497.jpg", description: "Savory egg and cheese pastry", price: "$6" },
+                      { title: "Fruit Salad", image: "fresh-fruit-salad-crystal-bowl-generative-ai_641010-15726.jpg", description: "Mixed fresh fruits", price: "$4" },
+                      { title: "Pasta Salad", image: "pasta-salad-no-meat-tomato-cucumber-farfalle-healthy-meal-diet-snack-table-copy-space_88242-17326.jpg", description: "Cold pasta with vegetables", price: "$5.5" },
+                          ];
+                      
+                              // Handle Contact Form Submission
+                          document.getElementById("contact-form").addEventListener("submit", function (e) {
+                              e.preventDefault(); // Prevent the form from reloading the page
+                      
+                              // Alert message
+                              alert("Your message has been sent!");
+                          });
+                      
+                              function generateMenu() {
+                                  const menuItems = document.getElementById("menu-items");
+                                  menuItems.innerHTML = "";  
+                      
+                                  menuData.forEach(item => {
+                                      const menuItem = document.createElement("div");
+                                      menuItem.classList.add("menu-item");
+                                      menuItem.innerHTML = `
+                                          <img src="${item.image}" alt="${item.title}">
+                                          <h3>${item.title}</h3>
+                                          <p>${item.description}</p>
+                                          <p>${item.price}</p>
+                                          <button onclick="addToCart('${item.title}')">Add to Cart</button>
+                                      `;
+                                      menuItems.appendChild(menuItem);
+                                  });
+                              }
+                      
+                              function showSection(sectionId) {
+                                  document.querySelectorAll('section').forEach(section => {
+                                      section.classList.remove('active');
+                                  });
+                                  document.getElementById(sectionId).classList.add('active');
+                              }
+                              // Handle Booking Form Submission
+                          document.getElementById("booking-form").addEventListener("submit", function (e) {
+                              e.preventDefault(); // Prevent form reload
+                      
+                              // Display success alert
+                              alert("Your booking has been successfully submitted!");
+                          });
+                      
+                      
+                              function addToCart(itemTitle) {
+                                  alert(`${itemTitle} has been added to your cart!`);
+                              }
+                      
+                              document.getElementById("booking-form").addEventListener("submit", function(e) {
+                                  e.preventDefault();
+                      
+                                  const name = document.getElementById("name").value;
+                                  const email = document.getElementById("email").value;
+                                  const bookingTime = document.getElementById("booking-time").value;
+                                  const specialRequest = document.getElementById("special-request").value;
+                      
+                                  alert(`Booking Confirmed!\nName: ${name}\nEmail: ${email}\nTime: ${bookingTime}\nSpecial Request: ${specialRequest}`);
+                              });
+                      
+                              window.onload = generateMenu;
+                          
+                          function generateMenu() {
+                              const menuItems = document.getElementById("menu-items");
+                              menuItems.innerHTML = "";  
+                      
+                              menuData.forEach(item => {
+                                  const menuItem = document.createElement("div");
+                                  menuItem.classList.add("menu-item");
+                                  menuItem.innerHTML = `
+                                      <img src="${item.image}" alt="${item.title}">
+                                      <h3>${item.title}</h3>
+                                      <p>${item.description}</p>
+                                      <p>${item.price}</p>
+                                      <button onclick="openOrderForm('${item.title}')">Buy Now</button>
+                                  `;
+                                  menuItems.appendChild(menuItem);
+                              });
+                          }
+                      
+                          function openOrderForm(productTitle) {
+                              const orderForm = document.createElement("div");
+                              orderForm.innerHTML = `
+                                  <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000;">
+                                      <h3>Order Form for ${productTitle}</h3>
+                                      <form id="order-form" style="display: flex; flex-direction: column; gap: 10px;">
+                                          <input type="text" id="customer-name" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                          <input type="email" id="customer-email" placeholder="Your Email" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                          <input type="number" id="quantity" placeholder="Quantity" required min="1" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                          <textarea id="customer-address" placeholder="Your Address" rows="3" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                                          <button type="submit" style="background: #28a745; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Place Order</button>
+                                      </form>
+                                      <button onclick="closeOrderForm()" style="margin-top: 10px; background: #dc3545; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
+                                  </div>
+                                  <div onclick="closeOrderForm()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+                              `;
+                              document.body.appendChild(orderForm);
+                      
+                              document.getElementById("order-form").addEventListener("submit", function (e) {
+                                  e.preventDefault();
+                      
+                                  const name = document.getElementById("customer-name").value;
+                                  const email = document.getElementById("customer-email").value;
+                                  const quantity = document.getElementById("quantity").value;
+                                  const address = document.getElementById("customer-address").value;
+                      
+                                  alert(`Order Placed Successfully!\n\nProduct: ${productTitle}\nName: ${name}\nEmail: ${email}\nQuantity: ${quantity}\nAddress: ${address}`);
+                      
+                                  closeOrderForm();
+                              });
+                          }
+                      
+                          function closeOrderForm() {
+                              document.body.querySelector("div").remove();
+                          }
+                      
+                           let cart = [];
+                      
+                          function generateMenu() {
+                              const menuItems = document.getElementById("menu-items");
+                              menuItems.innerHTML = "";  
+                      
+                              menuData.forEach(item => {
+                                  const menuItem = document.createElement("div");
+                                  menuItem.classList.add("menu-item");
+                                  menuItem.innerHTML = `
+                                      <img src="${item.image}" alt="${item.title}">
+                                      <h3>${item.title}</h3>
+                                      <p>${item.description}</p>
+                                      <p>${item.price}</p>
+                                      <button onclick="addToCart('${item.title}', '${item.price}')">Add to Cart</button>
+                                      <button onclick="openOrderForm('${item.title}')">Buy Now</button>
+                                  `;
+                                  menuItems.appendChild(menuItem);
+                              });
+                          }
+                      
+                          function addToCart(productTitle, productPrice) {
+                              // Check if product already in cart
+                              const existingProduct = cart.find(item => item.title === productTitle);
+                              
+                              if (existingProduct) {
+                                  existingProduct.quantity += 1; // Increase quantity if already in cart
+                              } else {
+                                  cart.push({ title: productTitle, price: productPrice, quantity: 1 }); // Add new product
+                              }
+                      
+                              alert(`${productTitle} has been added to your cart!`);
+                          }
+                      
+                       
+                      
+                          function closeOrderForm() {
+                              document.body.querySelector("div").remove();
+                          }
+                          
+                      
+                          
+                      let isFormSubmitted = false; // Track if form is submitted
+                      
+                      function generateMenu() {
+                          const menuItems = document.getElementById("menu-items");
+                          menuItems.innerHTML = "";  
+                      
+                          menuData.forEach(item => {
+                              const menuItem = document.createElement("div");
+                              menuItem.classList.add("menu-item");
+                              menuItem.innerHTML = `
+                                  <img src="${item.image}" alt="${item.title}">
+                                  <h3>${item.title}</h3>
+                                  <p>${item.description}</p>
+                                  <p>${item.price}</p>
+                                  <button onclick="addToCart('${item.title}', '${item.price}')">Add to Cart</button>
+                                  <button onclick="openOrderForm('${item.title}')">Buy Now</button>
+                              `;
+                              menuItems.appendChild(menuItem);
+                          });
+                      }
+                      
+                      function addToCart(productTitle, productPrice) {
+                          const existingProduct = cart.find(item => item.title === productTitle);
+                      
+                          if (existingProduct) {
+                              existingProduct.quantity += 1;
+                          } else {
+                              cart.push({ title: productTitle, price: productPrice, quantity: 1 });
+                          }
+                      
+                          alert(`${productTitle} has been added to your cart!`);
+                      }
+                      
+                      function openOrderForm(productTitle) {
+                          if (isFormSubmitted) {
+                              alert("You have already placed an order.");
+                              return; // Prevent opening the form again if already submitted
+                          }
+                      
+                          const orderForm = document.createElement("div");
+                          orderForm.innerHTML = `
+                              <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); z-index: 1000;">
+                                  <h3>Order Form for ${productTitle}</h3>
+                                  <form id="order-form" style="display: flex; flex-direction: column; gap: 10px;">
+                                      <input type="text" id="customer-name" placeholder="Your Name" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                      <input type="email" id="customer-email" placeholder="Your Email" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                      <input type="number" id="quantity" placeholder="Quantity" required min="1" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                      <textarea id="customer-address" placeholder="Your Address" rows="3" required style="padding: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+                                      <button type="submit" style="background: #28a745; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Place Order</button>
+                                  </form>
+                                  <button onclick="closeOrderForm()" style="margin-top: 10px; background: #dc3545; color: #fff; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Cancel</button>
+                              </div>
+                              <div onclick="closeOrderForm()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+                          `;
+                          document.body.appendChild(orderForm);
+                      
+                          // Prevent the page from reloading on form submission
+                          document.getElementById("order-form").addEventListener("submit", function(e) {
+                              e.preventDefault(); // Prevent page reload
+                      
+                              const name = document.getElementById("customer-name").value;
+                              const email = document.getElementById("customer-email").value;
+                              const quantity = document.getElementById("quantity").value;
+                              const address = document.getElementById("customer-address").value;
+                      
+                              alert(`Order Placed Successfully!\n\nProduct: ${productTitle}\nName: ${name}\nEmail: ${email}\nQuantity: ${quantity}\nAddress: ${address}`);
+                              
+                              // Set form submission status
+                              isFormSubmitted = true;
+                      
+                              closeOrderForm();
+                          });
+                      }
+                      
+                      function closeOrderForm() {
+                          document.body.querySelector("div").remove();
+                      }
+                      
+                      // On page load
+                      window.onload = function() {
+                          if (!isFormSubmitted) {
+                              generateMenu(); // Generate menu only if form not submitted
+                          }
+                      }
+                      
+                          </script>
+                      
+                      </body>
+                      </html>
+                      

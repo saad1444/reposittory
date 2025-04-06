@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Website</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+header {
+    background: #28a745;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+nav {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 5px 15px;
+}
+
+nav ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #28a745;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #28a745;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.section {
+    display: none;
+    padding: 20px;
+}
+
+.section.active {
+    display: block;
+}
+
+.mission, .features-content {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+}
+
+.events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.event-card {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h3 {
+    margin-bottom: 10px;
+}
+
+.donation-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.donation-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.donation-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.donation-form button {
+    background: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.donation-form button:hover {
+    background: #218838;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.feature-image {
+    width: 100%;
+    max-width: 290px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .events {
+        grid-template-columns: 1fr;
+    }
+
+    .mission, .features-content, .donation-form {
+        width: 95%;
+    }
+
+    .event-card {
+        padding: 15px;
+    }
+
+    .donation-form input,
+    .donation-form button {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 5px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+    }
+
+    .donation-form button {
+        font-size: 0.9rem;
+    }
+
+    .feature-image {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .mission, .features-content, .donation-form {
+        width: 95%;
+        padding: 15px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Charity for a Better Future</h1>
+        <p>Making a difference, one step at a time.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('mission')">Mission</a></li>
+            <li><a href="#" onclick="showSection('events')">Events</a></li>
+            <li><a href="#" onclick="showSection('donation')">Donate</a></li>
+            <li><a href="#" onclick="showSection('features')">Features</a></li>
+        </ul>
+    </nav>
+
+   <!-- Mission Section -->
+<section id="mission" class="section active">
+    <div class="mission">
+        <h2>Our Mission</h2>
+        <img src="sds1.webp" alt="Mission Image" style="width: 100%; border-radius: 8px; margin-bottom: 20px;">
+        <blockquote style="font-style: italic; color: #555; border-left: 4px solid #28a745; padding-left: 10px; margin-bottom: 20px;">
+            "The best way to find yourself is to lose yourself in the service of others." – Mahatma Gandhi
+        </blockquote>
+        <p>Our mission is to support underprivileged communities by providing education, healthcare, and other essential resources. Together, we can create a brighter and more equitable future for all.</p>
+        <h3>Key Areas of Focus:</h3>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+            <li><strong>Education:</strong> Offering free educational resources and workshops to empower children and adults.</li>
+            <li><strong>Healthcare:</strong> Providing access to essential healthcare services for those in need.</li>
+            <li><strong>Community Support:</strong> Building strong communities through support programs and volunteer activities.</li>
+        </ul>
+        <h3 style="margin-top: 20px;">How You Can Help:</h3>
+        <p>Join us in our journey to make a difference. Volunteer, donate, or spread the word about our mission. Every action counts!</p>
+    </div>
+</section>
+
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <h2 style="text-align: center;">Upcoming Events</h2>
+        <div class="events">
+            <div class="event-card">
+                <h3>Community Health Drive</h3>
+                <p>Date: February 15, 2025</p>
+                <p>Location: Downtown Community Center</p>
+                <p>Join us in providing free health check-ups and medicines to those in need.</p>
+            </div>
+            <div class="event-card">
+                <h3>Education for All Workshop</h3>
+                <p>Date: March 10, 2025</p>
+                <p>Location: Central Library</p>
+                <p>Empowering children with knowledge through free educational resources and guidance.</p>
+            </div>
+            <div class="event-card">
+                <h3>Charity Run</h3>
+                <p>Date: April 25, 2025</p>
+                <p>Location: City Park</p>
+                <p>Participate in our annual run to raise funds for our charity initiatives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donation" class="section">
+        <h2 style="text-align: center;">Make a Donation</h2>
+        <form class="donation-form" onsubmit="confirmDonation(event)">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="amount">Donation Amount ($):</label>
+            <input type="number" id="amount" name="amount" min="1" required>
+
+            <button type="submit">Donate Now</button>
+        </form>
+    </section>
+<!-- Features Section -->
+<section id="features" class="section">
+    <div class="features-content">
+        <h2 style="text-align: center;">Key Features of Our Website</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Explore the unique features that make our website a powerful platform for driving positive change.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px;">
+            <!-- Feature 1 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas2.webp" alt="Responsive Design" class="feature-image">
+                <h3>Responsive Design</h3>
+                <p>Enjoy a seamless browsing experience across all devices, including desktops, tablets, and smartphones.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas3.avif" alt="User-Friendly Interface" class="feature-image">
+                <h3>Easy Navigation</h3>
+                <p>Our intuitive interface ensures effortless access to all information, making it easy to explore and contribute.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas4.avif" alt="Secure Donations" class="feature-image">
+                <h3>Secure Donations</h3>
+                <p>Our robust online donation system ensures your contributions are safe, secure, and simple to make.</p>
+            </div>
+            <!-- Feature 4 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas5.webp" alt="Regular Updates" class="feature-image">
+                <h3>Regular Updates</h3>
+                <p>Stay informed with the latest news, updates about our mission, and details of upcoming events.</p>
+            </div>
+            <!-- Feature 5 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas7.avif" alt="Impact Transparency" class="feature-image">
+                <h3>Impact Transparency</h3>
+                <p>Access comprehensive details on how your contributions are utilized to make a tangible difference.</p>
+            </div>
+            <!-- Feature 6 -->
+            <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <img src="sas6.avif" alt="Volunteer Opportunities" class="feature-image">
+                <h3>Volunteer Opportunities</h3>
+                <p>Get involved with our various programs and make a hands-on contribution to our mission.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer style="background-color: #2a2a2a; color: #f1f1f1; padding: 40px 20px; font-family: Arial, sans-serif;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 20px; max-width: 1200px; margin: auto;">
+        <!-- About Section -->
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="color: #28a745; margin-bottom: 15px;">About Us</h3>
+            <p style="line-height: 1.6;">We are a non-profit organization dedicated to making a positive impact in underprivileged communities. Join us in creating a brighter future for all.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div style="flex: 1; min-width: 200px;">
+            <h3 style="color: #28a745; margin-bottom: 15px;">Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="#home" style="color: #f1f1f1; text-decoration: none; transition: color 0.3s;">Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="#about" style="color: #f1f1f1; text-decoration: none; transition: color 0.3s;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="#features" style="color: #f1f1f1; text-decoration: none; transition: color 0.3s;">Features</a></li>
+                <li style="margin-bottom: 10px;"><a href="#mission" style="color: #f1f1f1; text-decoration: none; transition: color 0.3s;">Our Mission</a></li>
+                <!-- <li><a href="#contact" style="color: #f1f1f1; text-decoration: none; transition: color 0.3s;">Contact Us</a></li> -->
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="color: #28a745; margin-bottom: 15px;">Contact Us</h3>
+            <p style="line-height: 1.6;">Email: <a href="mailto:info@charityfuture.org" style="color: #28a745; text-decoration: none;">saad12@gmail.com</a></p>
+            <p style="line-height: 1.6;">Phone: <a href="tel:+123456789" style="color: #28a745; text-decoration: none;">09876543212</a></p>
+            <p style="line-height: 1.6;">Address: Maripur Hawksbay Road Near PSO Pump karachi</p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div style="display: flex; gap: 15px; align-items: center; justify-content: center; flex: 1; min-width: 150px;">
+            <a href="https://facebook.com" target="_blank" style="color: #f1f1f1; text-decoration: none; transition: transform 0.3s;">
+                <i class="fab fa-facebook" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" style="color: #f1f1f1; text-decoration: none; transition: transform 0.3s;">
+                <i class="fab fa-twitter" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" style="color: #f1f1f1; text-decoration: none; transition: transform 0.3s;">
+                <i class="fab fa-instagram" style="font-size: 30px;"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" style="color: #f1f1f1; text-decoration: none; transition: transform 0.3s;">
+                <i class="fab fa-linkedin" style="font-size: 30px;"></i>
+            </a>
+        </div>
+    </div>
+
+    <hr style="border: 0.5px solid #444; margin: 20px 0;">
+
+    <div style="text-align: center;">
+        <p style="margin: 5px 0;">&copy; 2025 Charity for a Better Future. All Rights Reserved.</p>
+        <p style="margin: 5px 0;">Website  created by <a href="https://yourportfolio.com" style="color: #28a745; text-decoration: none;">Saad</a>.</p>
+    </div>
+</footer>
+
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function confirmDonation(event) {
+            event.preventDefault();
+            alert('Thank you for your generous donation!');
+        }
+    </script>
+</body>
+</html>
